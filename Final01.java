@@ -6,8 +6,8 @@ import java.util.*;
 public class Final01 {
         static Scanner scan = new Scanner(System.in);
         public static void main(String[] args) {
-            int Days[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-            String[] Month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            int Days[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+            String[] Month = {"","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
             ForwardDay(Days,Month);
             BackwardDay(Days,Month);
@@ -31,17 +31,18 @@ public class Final01 {
 
             int dd1 = dd,mm1=mm,yy1=yy;
             int count = 0; 
-            leapYear(yy,Days);
+            leapYear(yy1,Days);
             while(move > count){
                 dd1++;
                 count++;
-                if(dd1 > Days[mm]){
+             //   System.out.println("Debug : " + mm1);
+                if(dd1 > Days[mm1]){
                     dd1 = 1; mm1++;
-                    if(mm1 == 13){
-                        yy1++;
-                        mm1 = 1;
-                        leapYear(yy,Days);
-                    }
+                }
+                if(mm1 == 13){
+                    yy1++;
+                    mm1 = 1;
+                    leapYear(yy1,Days);
                 }
             }
             System.out.println("ForWard To => Year : "+ (yy1 + 543)  + " , Month : " + Month[mm1] + " , Day  : "+dd1);
@@ -64,7 +65,7 @@ public class Final01 {
 
             int dd1 = dd,mm1=mm,yy1=yy;
             int count = 0; 
-            leapYear(yy,Days);
+            leapYear(yy1,Days);
             while(move > count ){
                 dd1--;
                 count++;
@@ -74,7 +75,7 @@ public class Final01 {
                     if(mm1 == 1){
                         mm1 = 12;
                         yy1--;
-                        leapYear(yy,Days);
+                        leapYear(yy1,Days);
                     }
                 }
 
@@ -85,8 +86,8 @@ public class Final01 {
 
         }
         static void leapYear(int yy,int[] Days){
-            if(yy % 4 == 0 && (yy % 100 !=0 || yy % 400 == 0))  Days[1] = 29; 
-            else  Days[1] = 28;
+            if(yy % 4 == 0 && (yy % 100 !=0 || yy % 400 == 0))  Days[2] = 29; 
+            else  Days[2] = 28;
         }
         
     
